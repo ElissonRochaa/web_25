@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +28,10 @@ public class Usuario {
     private String cpf;
     @Enumerated(EnumType.STRING)
     private Perfil perfil;
+    @ManyToMany(mappedBy = "usuariosInteressados")
+    private List<Evento> eventosInteressados;
+    @OneToMany(mappedBy = "admin")
+    private List<Evento> eventosAdministrados;
 
     public Usuario(String nome, String email, String senha) {}
 

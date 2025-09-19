@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,10 +24,21 @@ public class Evento {
     @Column(length = 512)
     private String descricao;
     private int capacidade;
-    private String local;
+    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "id_endereco")
+    private Endereco endereco;
     private Timestamp data;
     @Enumerated(EnumType.STRING)
     private TipoEvento tipoEvento;
-    //private Usuario admin;
+    @ManyToOne
+    //@JoinColumn(name="id_admin")
+    private Usuario admin;
+    @ManyToMany
+//    @JoinTable(
+//            name = "Interesse",
+//            joinColumns = @JoinColumn(name = "id_usuario"),
+//            inverseJoinColumns = @JoinColumn(name = "id_evento")
+//    )
+    private List<Usuario> usuariosInteressados;
 
 }
