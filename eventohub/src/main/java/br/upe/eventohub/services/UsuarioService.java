@@ -1,15 +1,19 @@
 package br.upe.eventohub.services;
 
-import br.upe.eventohub.repositories.UsuarioRepository;
-import org.springframework.stereotype.Service;
+import br.upe.eventohub.entities.Usuario;
 
-@Service
-public class UsuarioService {
+import java.util.List;
+import java.util.UUID;
 
-    private UsuarioRepository usuarioRepository;
+public interface UsuarioService {
 
-    public void teste(){
-        usuarioRepository
-    }
+    public Usuario cadastrarUsuario(Usuario usuario);
+    public Usuario atualizarUsuario(Usuario usuario);
+    public boolean removerUsuario(Usuario usuario);
+    public boolean removerUsuario(UUID id);
+    public Usuario buscarUsuario(UUID id);
+    public List<Usuario> listarUsuarios();
+    public List<Usuario> buscarUsuarioPorNome(String nome);
+    //public boolean validarUsuario(Usuario usuario, String codigo);
 
 }

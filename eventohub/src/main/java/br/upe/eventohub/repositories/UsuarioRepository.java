@@ -13,4 +13,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
     public Usuario findByEmail(String email);
     public Usuario findByEmailAndSenha(String email, String senha);
     public List<Usuario> findByNomeContaining(String nome);
+//    @Query("Select u from Usuario u where u.email =:email")
+//    public Usuario buscarUsuarioPorEmail(String email);
+
 }
