@@ -4,6 +4,8 @@ import br.upe.eventohub.entities.Usuario;
 import br.upe.eventohub.repositories.UsuarioRepository;
 import br.upe.eventohub.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,8 +78,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
+    public Page<Usuario> listarUsuarios(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
     @Override
